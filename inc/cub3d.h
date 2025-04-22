@@ -152,6 +152,7 @@ typedef struct s_map
 typedef struct s_game
 {
 	int			count;
+	int			dup;
     t_texture   north;
     t_texture   south;
     t_texture   west;
