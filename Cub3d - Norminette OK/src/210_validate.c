@@ -33,3 +33,28 @@ int	_validate_data(t_game **game, t_data *data)
 		error(MAP, data);
 	return (SUCCESS);
 }
+
+int	verify_comma_and_digit(char *line)
+{
+	int		i;
+	int		count;
+
+	i = -1;
+	count = 0;
+	while (line[++i])
+		if (line[i] == ',')
+			count++;
+	if (count > 3)
+		return (FAILURE);
+	i = -1;
+	while (line[++i] != '\n')
+	{
+		while (line[i] == ' ' || line[i] == ',')
+			i++;
+		if (line[i] == '\n')
+			break ;
+		if (!ft_isdigit(line[i]))
+			return (FAILURE);
+	}
+	return (SUCCESS);
+}

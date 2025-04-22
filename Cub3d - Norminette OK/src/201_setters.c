@@ -73,6 +73,8 @@ int	set_floor(char *line, t_game *game, t_data *data)
 		error(PARSE, data);
 	while (is_whitespace(*line))
 		line++;
+	if (!verify_comma_and_digit(line))
+		return (FAILURE);
 	if (line)
 	{
 		rgb = ft_split(line, ',');
@@ -96,7 +98,7 @@ int	set_ceiling(char *line, t_game *game, t_data *data)
 	int		i;
 
 	line++;
-	if (!is_whitespace(*line))
+	if ((!is_whitespace(*line)) && (!verify_comma_and_digit(line)))
 		error(PARSE, data);
 	while (is_whitespace(*line))
 		line++;

@@ -14,13 +14,13 @@
 
 void	clean_mlx_image(t_data *data)
 {
-	if (data->game->north.path)
+	if (data->game->north.path && data->game->north.img)
 		mlx_destroy_image(data->mlx, data->game->north.img);
-	if (data->game->south.path)
+	if (data->game->south.path && data->game->south.img)
 		mlx_destroy_image(data->mlx, data->game->south.img);
-	if (data->game->east.path)
+	if (data->game->east.path && data->game->east.img)
 		mlx_destroy_image(data->mlx, data->game->east.img);
-	if (data->game->west.path)
+	if (data->game->west.path && data->game->west.img)
 		mlx_destroy_image(data->mlx, data->game->west.img);
 	mlx_destroy_image(data->mlx, data->img.img);
 }

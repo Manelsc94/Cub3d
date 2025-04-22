@@ -38,6 +38,19 @@ void	init_player(t_player *player, t_map *map)
 	player->key_esc = false;
 }
 
+static int	verify_img(t_game *game)
+{
+	if (!game->north.img)
+		return (FAILURE);
+	if (!game->south.img)
+		return (FAILURE);
+	if (!game->east.img)
+		return (FAILURE);
+	if (!game->west.img)
+		return (FAILURE);
+	return (SUCCESS);
+}
+
 void	init_game(t_data *data)
 {
 	init_player(&data->player, &data->game->map);
@@ -56,6 +69,11 @@ void	init_game(t_data *data)
 			data->game->east.path, &data->game->east.w, &data->game->east.h);
 	data->game->west.img = mlx_xpm_file_to_image(data->mlx,
 			data->game->west.path, &data->game->west.w, &data->game->west.h);
+	if (verify_img(data->game) == FAILURE)
+	{
+		game_exit(data);
+		error(PARSE, data);
+	}
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 }
 

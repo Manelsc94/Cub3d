@@ -240,6 +240,7 @@ void			put_pixel(int x, int y, unsigned int color, t_data *data);
 //210 - VALIDATE
 int				verify_player(t_map *map, char c, int player_count);
 int				_validate_data(t_game **game, t_data *data);
+int				verify_comma_and_digit(char *line);
 
 //211 - CHECKER
 int				out_of_range(t_game *game);
